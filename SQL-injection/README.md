@@ -29,13 +29,28 @@ MySQL 5.0 以上存在 information_schema，可以利用 information_schema 獲�
 
 <table>
   <tr>
-    <td>項次</td>
-    <td>品名</td>
-    <td>描述</td>
+    <td>Column name</td>
+    <td>Data type</td>
+    <td>Description</td>
   </tr>
   <tr>
-    <td>1</td>
-    <td>iPhone 5</td>
-    <td>iPhone 5是由蘋果公司開發的觸控式螢幕智慧型手機，是第六代的iPhone和繼承前一代的iPhone 4S。這款手機的設計比較以前產品更薄、更輕，及擁有更高解析度及更廣闊的4英寸觸控式螢幕，支援16:9寬螢幕。這款手機包括了一個自定義設計的ARMv7處理器的蘋果A6的更新、iOS 6操作系統，並且支援高速LTE網路。</td>
+    <td>TABLE_CATALOG</td>
+    <td>nvarchar(128)</td>
+    <td>Table qualifier.</td>
+  </tr>
+  <tr>
+    <td>TABLE_SCHEMA</td>
+    <td>nvarchar(128)</td>
+    <td>Name of schema that contains the table.</td>
+  </tr>
+  <tr>
+    <td>TABLE_NAME</td>
+    <td>sysname</td>
+    <td>Table name.</td>
+  </tr>
+  <tr>
+    <td>TABLE_TYPE</td>
+    <td>varchar(10)</td>
+    <td>Type of table. Can be VIEW or BASE TABLE.</td>
   </tr>
 </table>
