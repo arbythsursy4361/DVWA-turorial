@@ -26,7 +26,6 @@ Step 3.
 ---
 
 MySQL 5.0 以上存在 information_schema，可以利用 information_schema 獲得資料庫進一步資訊
-
 <table>
   <tr>
     <td>Column name</td>
@@ -54,3 +53,4 @@ MySQL 5.0 以上存在 information_schema，可以利用 information_schema 獲�
     <td>Type of table. Can be VIEW or BASE TABLE.</td>
   </tr>
 </table>
+0..0
