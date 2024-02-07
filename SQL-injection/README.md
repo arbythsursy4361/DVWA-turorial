@@ -29,7 +29,7 @@ MySQL 5.0 以上存在 information_schema，可以利用 information_schema 獲�
 
 找出資料庫裡所對應的所有資料表：SELECT table_name FROM information_schema.tables
 
-套用蓋年可以寫成：1' UNION SELECT 1, group_concat(table_name) FROM information_schema.tables WHERE table_schema = database(); #
+套用概念可以寫成：1' UNION SELECT 1, group_concat(table_name) FROM information_schema.tables WHERE table_schema = database(); #
 
 上面語法可以看到系統會使用到那些 Table 進行 query，接著再根據 Table 去查該 Table 有哪些欄位(column)：
 
